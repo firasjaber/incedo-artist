@@ -7,17 +7,7 @@ export interface Artist {
     image: Array<{"#text": string, size: string}>
 }
 
-// interface Image {
-//     "#text": string,
-//     size: string
-// }
-
-export interface IArtistQueryParams {
+export interface ArtistQueryParams {
     name: string;
-    format?: DataFormat;
-}
-
-export enum DataFormat {
-    CSV,
-    JSON,
+    filename?: string;
 }

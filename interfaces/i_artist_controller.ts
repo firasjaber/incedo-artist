@@ -1,4 +1,5 @@
 import { Response, Request } from 'express';
+import { ArtistQueryParams } from '../models/Artist';
 
 export interface IArtistController {
   /**
@@ -6,5 +7,5 @@ export interface IArtistController {
    * @route **GET** - /api/artists?name=artist_name&format="csv | json"
    * @access **Public**
    */
-  getArtistsByName(req: Request, res: Response): void;
+  getArtistsByName(req: Request<any, any, any, ArtistQueryParams>, res: Response): void;
 }
