@@ -3,7 +3,7 @@ import { Response, Request } from 'express';
 import { IArtistController } from '../interfaces/i_artist_controller';
 import { IRawArtist } from '../interfaces/i_raw_artist';
 import { ArtistQueryParams } from '../models/Artist';
-import { writeFile } from './../helpers';
+import { mapToCSV, writeFile } from './../helpers';
 
 export default class ArtistController implements IArtistController {
   async getArtistsByName(
@@ -24,16 +24,22 @@ export default class ArtistController implements IArtistController {
       if (filename) {
         // TODO: Write to CSV
         console.log('Provided filename:', filename);
-        const dummy = [
-          {
-            name: 'Eminem',
-            mbid: 'azeaz',
-            image_small: 'azea',
-            image: 'azeaz',
-          },
-        ];
 
-        writeFile(filename, dummy);
+        console.log(artists[0].image[0]['#text']);
+
+        const csvData = artists.map((artist) => mapToCSV(artist))
+
+        // const dummy = [
+        //   {
+        //     name: 'Eminem',
+        //     mbid: 'azeaz',
+        //     image_small: 'azea',
+        //     image: 'azeaz',
+        //   },
+        // ];
+        // console.log(csvData);
+
+        writeFile(filename, csvData);
       }
 
       return res.status(200).json({ message: 'success', data: artists });
