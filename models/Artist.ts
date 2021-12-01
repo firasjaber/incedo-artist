@@ -11,3 +11,13 @@ export interface Artist {
 //     "#text": string,
 //     size: string
 // }
+
+export interface IArtistQueryParams {
+    name: string;
+    format?: DataFormat;
+}
+
+export enum DataFormat {
+    CSV,
+    JSON,
+}
