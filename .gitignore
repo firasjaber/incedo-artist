@@ -2,3 +2,4 @@ node_modules
 Logs
 dist
 .env
+out

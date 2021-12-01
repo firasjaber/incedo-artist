@@ -1,9 +1,9 @@
-import { Artist } from "../models/Artist";
+import { Artist } from '../models/Artist';
 
 export interface IRawArtist {
-    results: {
-        artistsmatch: {
-            artist: Artist[]
-        }
-    }
+  results: {
+    artistmatches: {
+      artist: Artist[];
+    };
+  };
 }

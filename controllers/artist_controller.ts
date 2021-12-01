@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Response, Request } from 'express';
 import { IArtistController } from '../interfaces/i_artist_controller';
+import { IRawArtist } from '../interfaces/i_raw_artist';
 import { ArtistQueryParams } from '../models/Artist';
 import { writeFile } from './../helpers';
 
@@ -18,8 +19,8 @@ export default class ArtistController implements IArtistController {
       }
 
       let URL = `https://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${name}&api_key=8eab9cd2c818d7833494ff5242f70141&format=json`;
-      const data: any = await axios.get(URL);
-
+      const { data } = await axios.get<IRawArtist>(URL);
+      const artists = data.results.artistmatches.artist;
       if (filename) {
         // TODO: Write to CSV
         console.log('Provided filename:', filename);
@@ -35,9 +36,7 @@ export default class ArtistController implements IArtistController {
         writeFile(filename, dummy);
       }
 
-      return res
-        .status(200)
-        .json({ message: 'success', data: data.data?.results?.artistmatches });
+      return res.status(200).json({ message: 'success', data: artists });
     } catch (error) {
       console.log(error);
       res.status(500).json({ msg: 'errr' });
