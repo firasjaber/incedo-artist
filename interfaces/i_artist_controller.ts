@@ -1,5 +1,5 @@
-import { Artist } from "../models/Artist";
-
+import { Artist } from '../models/Artist';
+import { Response, Request } from 'express';
 export interface IArtistController {
-    getArtistsByName(name: string): Artist[]
+  getArtistsByName(req: Request, res: Response): void;
 }

@@ -14,6 +14,7 @@ import morganLogger from './middlewares/morgan_logger';
 // ---- Routes
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
+import artistRouter from './routes/artists';
 
 // -- Initialize app
 const app = express();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // -- Setup routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/artists', artistRouter);
 
 // -- Catch & handle 404 requests
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
