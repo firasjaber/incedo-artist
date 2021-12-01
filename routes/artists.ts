@@ -6,5 +6,4 @@ const artistController = new ArtistController();
 
 router.get('/', artistController.getArtistsByName);
 
-
 export default router;
