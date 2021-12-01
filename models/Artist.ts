@@ -1,7 +1,7 @@
 export interface Artist {
     name: string;
     listeners: string;
-    mbid: string;
+    mbid?: string;
     url: string;
     streamable: string;
     // image: Array<{"#text": string, size: string}>

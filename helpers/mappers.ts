@@ -9,8 +9,8 @@ export function mapToCSV(artist: Artist): ArtistCSV {
     // console.log(artist.image[0])
     return {
         name: artist.name,
-        mbid: artist.mbid,
-        image_small: artist.image[0]["#text"],
-        image: artist.image[1]["#text"],
+        mbid: artist.mbid ?? "mbid not found",
+        image_small: artist.image[0]["#text"] ?? "no small_image",
+        image: artist.image[1]["#text"] ?? "no image",
     }
 }
