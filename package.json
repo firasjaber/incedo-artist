@@ -6,7 +6,7 @@
     "dev": "nodemon ./bin/www.ts",
     "test": "jest",
     "postinstall": "tsc",
-    "start": "node dist/index.js",
+    "start": "npm run build && node ./dist/bin/www",
     "build": "tsc --project .",
     "prod": "tsc --project . && node ./dist/bin/www"
   },
