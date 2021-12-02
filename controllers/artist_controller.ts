@@ -15,30 +15,15 @@ export default class ArtistController implements IArtistController {
       if (!name) {
         return res
           .status(400)
-          .json({ success: 'false', error: 'missing params : name' });
+          .json({ success: false, error: 'missing params : name' });
       }
 
       let URL = `https://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${name}&api_key=8eab9cd2c818d7833494ff5242f70141&format=json`;
       const { data } = await axios.get<IRawArtist>(URL);
       const artists = data.results.artistmatches.artist;
+
       if (filename) {
-        // TODO: Write to CSV
-        console.log('Provided filename:', filename);
-
-        console.log(artists[0].image[0]['#text']);
-
         const csvData = artists.map((artist) => mapToCSV(artist));
-
-        // const dummy = [
-        //   {
-        //     name: 'Eminem',
-        //     mbid: 'azeaz',
-        //     image_small: 'azea',
-        //     image: 'azeaz',
-        //   },
-        // ];
-        // console.log(csvData);
-
         let fileWritten = await writeFile(filename, csvData);
         if (!fileWritten)
           return res
@@ -49,10 +34,10 @@ export default class ArtistController implements IArtistController {
             });
       }
 
-      return res.status(200).json({ message: 'success', data: artists });
+      return res.status(200).json({ success: true, data: artists });
     } catch (error) {
       console.log(error);
-      res.status(500).json({ msg: 'errr' });
+      res.status(500).json({ success: false, message: 'internal error' });
     }
   }
 }
