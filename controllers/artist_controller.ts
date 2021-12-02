@@ -14,7 +14,7 @@ export default class ArtistController implements IArtistController {
       const { name, filename } = req.query;
       if (!name) {
         return res
-          .status(401)
+          .status(400)
           .json({ success: 'false', error: 'missing params : name' });
       }
 
@@ -27,7 +27,7 @@ export default class ArtistController implements IArtistController {
 
         console.log(artists[0].image[0]['#text']);
 
-        const csvData = artists.map((artist) => mapToCSV(artist))
+        const csvData = artists.map((artist) => mapToCSV(artist));
 
         // const dummy = [
         //   {
@@ -39,7 +39,14 @@ export default class ArtistController implements IArtistController {
         // ];
         // console.log(csvData);
 
-        writeFile(filename, csvData);
+        let fileWritten = await writeFile(filename, csvData);
+        if (!fileWritten)
+          return res
+            .status(400)
+            .json({
+              success: false,
+              message: 'error occured while saving the file',
+            });
       }
 
       return res.status(200).json({ message: 'success', data: artists });
