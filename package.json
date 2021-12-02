@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "nodemon ./bin/www.ts",
     "test": "jest",
-    "postinstall": "tsc",
-    "start": "npm run build && node ./dist/bin/www",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc",
+    "start": "node ./dist/bin/www",
     "build": "tsc --project .",
     "prod": "tsc --project . && node ./dist/bin/www"
   },
