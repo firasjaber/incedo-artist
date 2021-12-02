@@ -12,8 +12,6 @@ import cookieParser from 'cookie-parser';
 import morganLogger from './middlewares/morgan_logger';
 
 // ---- Routes
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
 import artistRouter from './routes/artists';
 
 // -- Initialize app
@@ -27,8 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // -- Setup routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/artists', artistRouter);
 
 // -- Catch & handle 404 requests
@@ -38,7 +34,7 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     .json({ code: 1, message: 'An unexpected error has occured' });
 };
 
-app.use(function (_req: Request, _res: Response, next: NextFunction) {
+app.use(function(_req: Request, _res: Response, next: NextFunction) {
   next(createError(404));
 });
 
