@@ -9,10 +9,10 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 
 // ---- Import middlewares
-import morganLogger from './src/middlewares/morgan_logger';
+import morganLogger from './middlewares/morgan_logger';
 
 // ---- Routes
-import artistRouter from './src/routes/artists';
+import artistRouter from './routes/artists';
 
 // -- Initialize app
 const app = express();

@@ -1,5 +1,14 @@
 import { ArtistCSV } from './../src/models/Artist';
 
+export const artistMock: ArtistCSV[] = [
+  {
+    name: 'Eminem',
+    mbid: '123',
+    image_small: 'https://placeholderimage.com',
+    image: 'https://placeholderimage.com',
+  },
+];
+
 export const artistsMock = [
   {
     name: 'Eminem',

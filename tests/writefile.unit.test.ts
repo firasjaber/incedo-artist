@@ -2,22 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import csv from 'csv-parser';
 import { writeFile } from '../src/helpers';
-import { ArtistCSV } from './../src/models/Artist';
+import { artistMock } from './mocks';
 
 describe('File writer unit tests', () => {
-  let mockData: ArtistCSV[] = [
-    {
-      name: 'Eminem',
-      mbid: '123',
-      image_small: 'https://placeholderimage.com',
-      image: 'https://placeholderimage.com',
-    },
-  ];
   let filename = 'testfile';
   let outPath = path.join(__dirname, '../out/') + filename + '.csv';
 
   test('csv file created', async () => {
-    await writeFile(filename, mockData);
+    await writeFile(filename, artistMock);
     expect(fs.existsSync(outPath)).toBe(true);
   });
 
@@ -28,7 +20,7 @@ describe('File writer unit tests', () => {
       .pipe(csv())
       .on('data', (data) => results.push(data))
       .on('end', () => {
-        expect(results).toStrictEqual(mockData);
+        expect(results).toStrictEqual(artistMock);
         if (fs.existsSync(outPath)) fs.unlinkSync(outPath);
       });
   });

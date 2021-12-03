@@ -3,6 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import { ArtistCSV } from '../models/Artist';
 
+/**
+ * Write artists data to specified CSV file
+ * @param filename - CSV file name
+ * @param data - array of _ArtistCSV_ object
+ * @returns Boolean (file written successfully or not)
+ */
 export async function writeFile(filename: string, data: ArtistCSV[]) {
   const logDirectory = path.join(__dirname, './../../out/');
   fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
