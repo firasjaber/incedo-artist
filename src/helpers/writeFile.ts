@@ -4,7 +4,7 @@ import path from 'path';
 import { ArtistCSV } from '../models/Artist';
 
 export async function writeFile(filename: string, data: ArtistCSV[]) {
-  const logDirectory = path.join(__dirname, '../out/');
+  const logDirectory = path.join(__dirname, './../../out/');
   fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
   const csvWriter = createObjectCsvWriter({
     path: path.join(logDirectory, `${filename}.csv`),

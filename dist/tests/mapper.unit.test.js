@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpers_1 = require("../helpers");
+const helpers_1 = require("./../src/helpers");
 const mocks_1 = require("./mocks");
 describe('Mapper unit tests', () => {
     it('map artist data to ArtistCSV interface', () => {

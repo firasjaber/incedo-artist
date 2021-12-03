@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const csv_parser_1 = __importDefault(require("csv-parser"));
-const helpers_1 = require("../helpers");
+const helpers_1 = require("../src/helpers");
 describe('File writer unit tests', () => {
     let mockData = [
         {

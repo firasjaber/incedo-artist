@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import csv from 'csv-parser';
-import { writeFile } from '../helpers';
-import { ArtistCSV } from '../models/Artist';
+import { writeFile } from '../src/helpers';
+import { ArtistCSV } from './../src/models/Artist';
 
 describe('File writer unit tests', () => {
   let mockData: ArtistCSV[] = [

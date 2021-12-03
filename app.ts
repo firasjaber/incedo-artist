@@ -9,10 +9,10 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 
 // ---- Import middlewares
-import morganLogger from './middlewares/morgan_logger';
+import morganLogger from './src/middlewares/morgan_logger';
 
 // ---- Routes
-import artistRouter from './routes/artists';
+import artistRouter from './src/routes/artists';
 
 // -- Initialize app
 const app = express();
@@ -34,7 +34,7 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     .json({ code: 1, message: 'An unexpected error has occured' });
 };
 
-app.use(function(_req: Request, _res: Response, next: NextFunction) {
+app.use(function (_req: Request, _res: Response, next: NextFunction) {
   next(createError(404));
 });
 

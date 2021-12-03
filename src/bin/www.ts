@@ -1,7 +1,7 @@
 // -- Find and load .env file if any
 require('dotenv').config();
 
-import app from '../app';
+import app from './../../app';
 import http from 'http';
 
 // -- Get port from environment variables or use default

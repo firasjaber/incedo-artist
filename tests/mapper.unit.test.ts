@@ -1,4 +1,4 @@
-import { mapToCSV } from '../helpers';
+import { mapToCSV } from './../src/helpers';
 import { artistMapResult, artistsMock } from './mocks';
 
 describe('Mapper unit tests', () => {

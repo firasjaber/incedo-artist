@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "A barebones express app with typescript!",
   "scripts": {
-    "dev": "nodemon ./bin/www.ts",
+    "dev": "nodemon ./src/bin/www.ts",
     "test": "jest",
-    "tsc": "tsc",
-    "postinstall": "npm run tsc",
-    "start": "node ./dist/bin/www",
-    "build": "tsc --project .",
-    "prod": "tsc --project . && node ./dist/bin/www"
+    "postinstall": "npm run build",
+    "start": "node ./dist/src/bin/www",
+    "build": "tsc --project ."
   },
   "dependencies": {
     "axios": "^0.24.0",

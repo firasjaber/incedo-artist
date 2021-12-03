@@ -18,7 +18,7 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 function writeFile(filename, data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const logDirectory = path_1.default.join(__dirname, '../out/');
+        const logDirectory = path_1.default.join(__dirname, './../../out/');
         fs_1.default.existsSync(logDirectory) || fs_1.default.mkdirSync(logDirectory);
         const csvWriter = (0, csv_writer_1.createObjectCsvWriter)({
             path: path_1.default.join(logDirectory, `${filename}.csv`),

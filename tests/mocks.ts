@@ -1,4 +1,4 @@
-import { ArtistCSV } from '../models/Artist';
+import { ArtistCSV } from './../src/models/Artist';
 
 export const artistsMock = [
   {
