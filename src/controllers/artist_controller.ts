@@ -3,7 +3,7 @@ import { Response, Request } from 'express';
 import { IArtistController } from '../interfaces/i_artist_controller';
 import { IRawArtist } from '../interfaces/i_raw_artist';
 import { ArtistQueryParams } from '../models/Artist';
-import { mapToCSV, writeFile } from './../helpers';
+import { mapToCSV, randomArtists, writeFile } from './../helpers';
 
 export default class ArtistController implements IArtistController {
   async getArtistsByName(
@@ -15,23 +15,27 @@ export default class ArtistController implements IArtistController {
       if (!name) {
         return res
           .status(400)
-          .json({ success: false, error: 'missing params : name' });
+          .json({ success: false, error: 'missing param : name' });
+      }
+      if (!filename) {
+        return res
+          .status(400)
+          .json({ success: false, error: 'missing param : filename' });
       }
 
       let URL = `https://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${name}&api_key=8eab9cd2c818d7833494ff5242f70141&format=json`;
       const { data } = await axios.get<IRawArtist>(URL);
-      const artists = data.results.artistmatches.artist;
-
-      if (filename) {
+      let artists = data.results.artistmatches.artist;
+      if (artists.length === 0) {
+        artists = await randomArtists();
+      } else {
         const csvData = artists.map((artist) => mapToCSV(artist));
         let fileWritten = await writeFile(filename, csvData);
         if (!fileWritten)
-          return res
-            .status(400)
-            .json({
-              success: false,
-              message: 'error occured while saving the file',
-            });
+          return res.status(400).json({
+            success: false,
+            message: 'error occured while saving the file',
+          });
       }
 
       return res.status(200).json({ success: true, data: artists });
