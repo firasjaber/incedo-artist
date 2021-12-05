@@ -8,6 +8,7 @@ import createError from 'http-errors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import expressJSDocSwagger from 'express-jsdoc-swagger';
 
 // ---- Import middlewares
 import morganLogger from './middlewares/morgan_logger';
@@ -27,6 +28,29 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// -- Swagger Config
+const options = {
+  info: {
+    version: '1.0.0',
+    title: 'INCEDO Artists',
+    description: 'Last.fm api wrapper',
+  },
+  baseDir: __dirname,
+  // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
+  filesPattern: './routes/*.ts',
+  // URL where SwaggerUI will be rendered
+  swaggerUIPath: '/api-docs',
+  // Expose OpenAPI UI
+  exposeSwaggerUI: true,
+  // Expose Open API JSON Docs documentation in `apiDocsPath` path.
+  exposeApiDocs: false,
+  // Open API JSON Docs endpoint.
+  apiDocsPath: '/api-docs',
+  // Set non-required fields as nullable by default
+  notRequiredAsNullable: false,
+};
+expressJSDocSwagger(app)(options);
 
 // -- Setup routes
 app.use('/artists', artistRouter);
