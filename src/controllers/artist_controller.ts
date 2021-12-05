@@ -16,12 +16,12 @@ export default class ArtistController implements IArtistController {
       if (!name) {
         return res
           .status(400)
-          .json({ success: false, error: 'missing param : name' });
+          .json({ success: false, message: 'missing param : name' });
       }
       if (!filename) {
         return res
           .status(400)
-          .json({ success: false, error: 'missing param : filename' });
+          .json({ success: false, message: 'missing param : filename' });
       }
 
       let URL = BASE_URL + `&artist=${name}`;
@@ -33,7 +33,7 @@ export default class ArtistController implements IArtistController {
         const csvData = artists.map((artist) => mapToCSV(artist));
         let fileWritten = await writeFile(filename, csvData);
         if (!fileWritten)
-          return res.status(400).json({
+          return res.status(500).json({
             success: false,
             message: 'error occured while saving the file',
           });
