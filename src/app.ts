@@ -7,12 +7,16 @@ import express, {
 import createError from 'http-errors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
 // ---- Import middlewares
 import morganLogger from './middlewares/morgan_logger';
 
 // ---- Routes
 import artistRouter from './routes/artists';
+
+// -- Load env virables
+dotenv.config();
 
 // -- Initialize app
 const app = express();

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Response, Request } from 'express';
+import { BASE_URL, LASTFM_API_KEY } from '../config';
 import { IArtistController } from '../interfaces/i_artist_controller';
 import { IRawArtist } from '../interfaces/i_raw_artist';
 import { ArtistQueryParams } from '../models/Artist';
@@ -23,7 +24,7 @@ export default class ArtistController implements IArtistController {
           .json({ success: false, error: 'missing param : filename' });
       }
 
-      let URL = `https://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${name}&api_key=8eab9cd2c818d7833494ff5242f70141&format=json`;
+      let URL = BASE_URL + `&artist=${name}`;
       const { data } = await axios.get<IRawArtist>(URL);
       let artists = data.results.artistmatches.artist;
       if (artists.length === 0) {
