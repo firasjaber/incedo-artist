@@ -7,7 +7,6 @@ import express, {
 import createError from 'http-errors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 import expressJSDocSwagger from 'express-jsdoc-swagger';
 
 // ---- Import middlewares
