@@ -6,8 +6,10 @@
     "rootDir": "./",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "removeComments": true,
+    "removeComments": false,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "strict": true
-  }
+  },
+  "include": ["src/helpers/*.json", "src/"]
 }

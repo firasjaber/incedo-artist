@@ -16,9 +16,6 @@ import morganLogger from './middlewares/morgan_logger';
 // ---- Routes
 import artistRouter from './routes/artists';
 
-// -- Load env virables
-dotenv.config();
-
 // -- Initialize app
 const app = express();
 
@@ -38,13 +35,13 @@ const options = {
   },
   baseDir: __dirname,
   // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
-  filesPattern: './routes/*.ts',
+  filesPattern: ['./routes/*.ts', './routes/*.js'],
   // URL where SwaggerUI will be rendered
   swaggerUIPath: '/api-docs',
   // Expose OpenAPI UI
   exposeSwaggerUI: true,
   // Expose Open API JSON Docs documentation in `apiDocsPath` path.
-  exposeApiDocs: false,
+  exposeApiDocs: true,
   // Open API JSON Docs endpoint.
   apiDocsPath: '/api-docs',
   // Set non-required fields as nullable by default
