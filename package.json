@@ -4,6 +4,7 @@
   "description": "A barebones express app with typescript!",
   "scripts": {
     "dev": "nodemon ./src/bin/www.ts",
+    "prod": "tsc --project . && node ./dist/bin/www",
     "test": "jest",
     "postinstall": "npm run build",
     "start": "node ./dist/src/bin/www",
@@ -36,6 +37,6 @@
     "typescript": "^4.4.4"
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.13.1"
   }
 }
