@@ -10,8 +10,8 @@ const artistController = new ArtistController();
  * @summary Return artists matches by name, and save the a specified file
  * @param {string} name.query.required Artists name
  * @param {string} filename.query.required Name of a file to save the results to
- * @return {object} 200 - success response
- * @example response - 200 - success response example
+ * @return {object} 201 - success response with valid artist
+ * @example response - 201 - success response example
  * {
  * 		"success" : true,
  * 		"data" : [
@@ -29,7 +29,8 @@ const artistController = new ArtistController();
  * 				}
  * 		]
  * }
- * @example response - 200 - success response with not found artist
+ * @return {object} 200 - success response with invalid artist
+ * @example response - 200 - success response with invalid artist
  * {
  * 		"success" : true,
  * 		"data" : [

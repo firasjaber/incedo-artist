@@ -29,6 +29,7 @@ export default class ArtistController implements IArtistController {
       let artists = data.results.artistmatches.artist;
       if (artists.length === 0) {
         artists = await randomArtists();
+        return res.status(200).json({ success: true, data: artists });
       } else {
         const csvData = artists.map((artist) => mapToCSV(artist));
         let fileWritten = await writeFile(filename, csvData);
@@ -37,9 +38,8 @@ export default class ArtistController implements IArtistController {
             success: false,
             message: 'error occured while saving the file',
           });
+        return res.status(201).json({ success: true, data: artists });
       }
-
-      return res.status(200).json({ success: true, data: artists });
     } catch (error) {
       console.log(error);
       res.status(500).json({ success: false, message: 'internal error' });

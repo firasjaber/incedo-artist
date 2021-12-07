@@ -33,7 +33,7 @@ describe('Artists endpoints', () => {
       '/artists?name=eminem&filename=testfile'
     );
     const outDirectory = path.join(__dirname, './../out/testfile.csv');
-    expect(response.statusCode).toEqual(200);
+    expect(response.statusCode).toEqual(201);
     expect(response.body.data).toBeTruthy();
     expect(fs.existsSync(outDirectory)).toBe(true);
     //teardown
