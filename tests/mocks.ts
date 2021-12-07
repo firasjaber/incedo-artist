@@ -98,3 +98,9 @@ export const artistMapResult: ArtistCSV[] = [
       'https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png',
   },
 ];
+
+export const randomArtistsMock: Array<{ name: string }> = [
+  { name: 'mcfirrj' },
+  { name: 'lil usersina' },
+  { name: 'nimo' },
+];
