@@ -10,10 +10,10 @@ import { ArtistCSV } from '../models/Artist';
  * @returns Boolean (file written successfully or not)
  */
 export async function writeFile(filename: string, data: ArtistCSV[]) {
-  const logDirectory = path.join(__dirname, './../../out/');
-  fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+  const outDirectory = path.join(__dirname, './../../out/');
+  fs.existsSync(outDirectory) || fs.mkdirSync(outDirectory);
   const csvWriter = createObjectCsvWriter({
-    path: path.join(logDirectory, `${filename}.csv`),
+    path: path.join(outDirectory, `${filename}.csv`),
     header: [
       { id: 'name', title: 'name' },
       { id: 'mbid', title: 'mbid' },
