@@ -1,6 +1,3 @@
-// -- Find and load .env file if any
-require('dotenv').config();
-
 import app from '../app';
 import http from 'http';
 

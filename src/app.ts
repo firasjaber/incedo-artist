@@ -8,6 +8,10 @@ import createError from 'http-errors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import expressJSDocSwagger from 'express-jsdoc-swagger';
+import dotenv from 'dotenv';
+
+// --- Load env variables
+dotenv.config();
 
 // ---- Import middlewares
 import morganLogger from './middlewares/morgan_logger';
