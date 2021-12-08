@@ -59,7 +59,7 @@ app.use('/artists', artistRouter);
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   res
     .status(err.status || 500)
-    .json({ code: 1, message: 'An unexpected error has occured' });
+    .json({ success: false, message: 'Route not found' });
 };
 
 app.use(function (_req: Request, _res: Response, next: NextFunction) {
