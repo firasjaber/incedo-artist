@@ -7,7 +7,7 @@ This is a Node.js REST API application that has the following features:
 - Retrieveing random artists from a JSON file if no results are found from the third party api.
 - A Swagger documentation.
 
-You can view [the deployed version here.](http://139.162.186.236:9000/api-docs/#/Artists)
+~~You can view [the deployed version here.](http://139.162.186.236:9000/api-docs/#/Artists)~~
 
 ---
 
